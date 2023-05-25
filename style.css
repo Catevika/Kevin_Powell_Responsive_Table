@@ -1,0 +1,87 @@
+html {
+  color-scheme: dark;
+}
+
+body {
+  color: #eee;
+  font-size: 1rem;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+.wrapper {
+  width: min(900px, 100% - 3rem);
+  margin-inline: auto;
+}
+
+/* TODO - https: //adrianroselli.com/2017/11/a-responsive-accessible-table.html */
+
+/* TODO - https: //adrianroselli.com/2018/05/functions-to-add-aria-to-tables-and-lists.html */
+
+/* * Tables are desktop first */
+
+/* * caption tag does not get the set background color, it has to be set apart */
+
+/* * to remove the separation lines when a background color is set for the th or td tags, add border-collapse: collapse to the table but the padding dissapear on table and needs to be added to the th, td instead */
+
+/* ! The grid display the semantic meaning of the table for accessibility so, there is a script called addTableARIA that makes the accessibility good again */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #323232;
+}
+
+caption,
+th,
+td {
+  padding: 1rem;
+}
+
+caption,
+th {
+  text-align: left;
+}
+
+caption {
+  background: hsl(0 0% 0%);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+th {
+  background: hsl(0 0% 0%/0.5);
+}
+
+tr:nth-of-type(2n) {
+  background: hsl(0 0% 0%/0.1);
+}
+
+@media (max-width: 650px) {
+  th {
+    display: none;
+  }
+
+  td {
+    /* display: block; */
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 15ch auto;
+    padding: 0.5rem 1rem;
+  }
+
+  td::before {
+    content: attr(data-cell) ": ";
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+
+  td:first-child {
+    padding-top: 1rem;
+  }
+
+  td:last-child {
+    padding-bottom: 2rem;
+  }
+}
